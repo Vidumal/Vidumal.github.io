@@ -29,6 +29,13 @@
   --card-hover: #ffffff;
 }
 
+.gallery-grid {
+        display: grid;
+        /* Increased min-width from 250px to 450px to make images much larger */
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+        gap: 25px;
+        margin-bottom: 40px;
+    }
 /* =========================================
    2. GLOBAL STYLES
    ========================================= */
