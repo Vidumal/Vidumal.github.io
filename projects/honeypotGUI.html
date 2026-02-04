@@ -2,332 +2,414 @@
 <html lang="en" data-theme="dark">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoneyGuard Pro | Punsith Vidumal</title>
-  
-  <link rel="stylesheet" href="../style.css">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoneyGuard Pro | Punsith Vidumal</title>
 
-  <style>
-    /* ... (Previous Styles) ... */
-    #form-result { display: none; margin-top: 15px; text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: bold; padding: 10px; border-radius: 5px; }
-    .success-msg { color: #00f3ff; background: rgba(0, 243, 255, 0.1); border: 1px solid #00f3ff; }
-    .error-msg { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; }
-    .tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-    .tech-list li { background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--accent-color); color: var(--accent-color); }
-    .file-structure li { margin-bottom: 8px; padding-left: 15px; border-left: 2px solid var(--text-secondary); }
-    .feature-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; }
-    .badge-gui { background: #6c5ce7; color: white; }
-    .badge-docker { background: #00a8ff; color: white; }
+    <link rel="stylesheet" href="../style.css">
 
-    /* --- NEW GALLERY STYLES --- */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-bottom: 40px;
-    }
-    .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-        transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-    .gallery-item:hover {
-        transform: scale(1.02);
-        border-color: var(--accent-color);
-        box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-    }
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: opacity 0.3s ease;
-    }
-    .gallery-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 10px;
-        text-align: center;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-    }
-    .gallery-item:hover .gallery-overlay {
-        transform: translateY(0);
-    }
-    .gallery-caption {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
-        color: var(--accent-color);
-    }
-  </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ... (Previous Styles) ... */
+        #form-result {
+            display: none;
+            margin-top: 15px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .success-msg {
+            color: #00f3ff;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid #00f3ff;
+        }
+
+        .error-msg {
+            color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid #ff4d4d;
+        }
+
+        .tech-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tech-list li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .file-structure li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            border-left: 2px solid var(--text-secondary);
+        }
+
+        .feature-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .badge-gui {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        .badge-docker {
+            background: #00a8ff;
+            color: white;
+        }
+
+        /* --- NEW GALLERY STYLES --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-caption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="loader">
-    <div class="scanner"></div>
-  </div>
-
-  <nav>
-    <div class="logo">Punsith<span class="dot">.</span>Sec</div>
-    <ul class="nav-links">
-      <li><a href="../index.html#home">Home</a></li>
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="../index.html#skills">Skills</a></li>
-      <li><a href="../index.html#projects">Projects</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
-    
-    <div class="theme-switch-wrapper">
-      <label class="theme-switch" for="checkbox">
-        <input type="checkbox" id="checkbox" />
-        <div class="slider round">
-          <i class="fas fa-sun"></i>
-          <i class="fas fa-moon"></i>
-        </div>
-      </label>
+    <div class="loader">
+        <div class="scanner"></div>
     </div>
-  </nav>
 
-  <section class="project-details-page" style="padding: 120px 0;">
-    <div class="container">
-      
-      <div class="glass-panel" style="max-width: 1000px; margin: 0 auto;">
-        
-        <div style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px;">
-          <h1 style="font-size: 2.5rem; font-family: 'JetBrains Mono'; margin-bottom: 10px;">HoneyGuard Pro</h1>
-          <p style="color: var(--text-secondary); margin-bottom: 20px;">Advanced Threat Intelligence Honeypot</p>
-          
-          <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.2rem;">
-              <a href="https://github.com/Vidumal/honeypot-with-GUI" target="_blank" style="color: var(--accent-color); text-decoration: none;">
-                  <i class="fab fa-github"></i> View Source Code
-              </a>
-          </div>
+    <nav>
+        <div class="logo">Punsith<span class="dot">.</span>Sec</div>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </label>
         </div>
+    </nav>
 
-        <div class="project-content">
-            
-            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
-                <i class="fas fa-shield-virus"></i> Project Overview
-            </h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: var(--text-secondary);">
-                <strong>HoneyGuard Pro</strong> is a multi-threaded network honeypot designed to detect, log, and visualize unauthorized access attempts in real-time. What sets it apart is its unique <strong>Dual-Mode Architecture</strong>, which automatically adapts to its environment—offering a full GUI for local monitoring or a lightweight CLI for Docker/Cloud deployments.
-            </p>
+    <section class="project-details-page" style="padding: 120px 0;">
+        <div class="container">
 
-            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
-                <i class="fas fa-microchip"></i> Technologies Used
-            </h2>
-            <ul class="tech-list" style="margin-bottom: 40px;">
-                <li>Python 3.9+</li>
-                <li>Docker</li>
-                <li>Tkinter (CustomTkinter)</li>
-                <li>Socket Programming</li>
-                <li>IP-API (Geolocation)</li>
-                <li>Threading</li>
-            </ul>
+            <div class="glass-panel" style="max-width: 1000px; margin: 0 auto;">
 
-            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
-                <i class="fas fa-star"></i> Key Features
-            </h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
-                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
-                    <h3 style="margin-bottom: 10px; color: var(--text-primary);">
-                        <span class="feature-badge badge-gui">GUI</span> Interactive Dashboard
-                    </h3>
-                    <ul class="file-structure" style="list-style: none; color: var(--text-secondary);">
-                        <li><strong>Live Attack Map:</strong> Visualizes attacker locations instantly on a zoomable world map using TkinterMapView.</li>
-                        <li><strong>Real-Time Stats:</strong> Dynamic counters for threat levels and total attacks.</li>
-                        <li><strong>Simulation Tool:</strong> Built-in tool to simulate SQLi and XSS attacks for testing.</li>
+                <div
+                    style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px;">
+                    <h1 style="font-size: 2.5rem; font-family: 'JetBrains Mono'; margin-bottom: 10px;">HoneyGuard Pro
+                    </h1>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Advanced Threat Intelligence Honeypot
+                    </p>
+
+                    <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.2rem;">
+                        <a href="https://github.com/Vidumal/honeypot-with-GUI" target="_blank"
+                            style="color: var(--accent-color); text-decoration: none;">
+                            <i class="fab fa-github"></i> View Source Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-content">
+
+                    <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                        <i class="fas fa-shield-virus"></i> Project Overview
+                    </h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: var(--text-secondary);">
+                        <strong>HoneyGuard Pro</strong> is a multi-threaded network honeypot designed to detect, log,
+                        and visualize unauthorized access attempts in real-time. What sets it apart is its unique
+                        <strong>Dual-Mode Architecture</strong>, which automatically adapts to its environment—offering
+                        a full GUI for local monitoring or a lightweight CLI for Docker/Cloud deployments.
+                    </p>
+
+                    <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                        <i class="fas fa-microchip"></i> Technologies Used
+                    </h2>
+                    <ul class="tech-list" style="margin-bottom: 40px;">
+                        <li>Python 3.9+</li>
+                        <li>Docker</li>
+                        <li>Tkinter (CustomTkinter)</li>
+                        <li>Socket Programming</li>
+                        <li>IP-API (Geolocation)</li>
+                        <li>Threading</li>
                     </ul>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
-                    <h3 style="margin-bottom: 10px; color: var(--text-primary);">
-                        <span class="feature-badge badge-docker">CLI</span> Headless Docker Mode
-                    </h3>
-                    <ul class="file-structure" style="list-style: none; color: var(--text-secondary);">
-                        <li><strong>Auto-Detection:</strong> Automatically switches to CLI mode when running in a container.</li>
-                        <li><strong>Cross-Platform:</strong> Handles file paths for both Windows and Linux environments.</li>
-                        <li><strong>Instant Logging:</strong> Forces unbuffered output to Docker logs for immediate verification.</li>
+
+                    <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                        <i class="fas fa-star"></i> Key Features
+                    </h2>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
+                            <h3 style="margin-bottom: 10px; color: var(--text-primary);">
+                                <span class="feature-badge badge-gui">GUI</span> Interactive Dashboard
+                            </h3>
+                            <ul class="file-structure" style="list-style: none; color: var(--text-secondary);">
+                                <li><strong>Live Attack Map:</strong> Visualizes attacker locations instantly on a
+                                    zoomable world map using TkinterMapView.</li>
+                                <li><strong>Real-Time Stats:</strong> Dynamic counters for threat levels and total
+                                    attacks.</li>
+                                <li><strong>Simulation Tool:</strong> Built-in tool to simulate SQLi and XSS attacks for
+                                    testing.</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
+                            <h3 style="margin-bottom: 10px; color: var(--text-primary);">
+                                <span class="feature-badge badge-docker">CLI</span> Headless Docker Mode
+                            </h3>
+                            <ul class="file-structure" style="list-style: none; color: var(--text-secondary);">
+                                <li><strong>Auto-Detection:</strong> Automatically switches to CLI mode when running in
+                                    a container.</li>
+                                <li><strong>Cross-Platform:</strong> Handles file paths for both Windows and Linux
+                                    environments.</li>
+                                <li><strong>Instant Logging:</strong> Forces unbuffered output to Docker logs for
+                                    immediate verification.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 style="color: var(--accent-color); margin-bottom: 20px; font-family: 'JetBrains Mono';">
+                        <i class="fas fa-images"></i> Surveillance Gallery
+                    </h2>
+
+                    <div class="gallery-grid">
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI1.png"
+                                alt="Live Threat Map Dashboard">
+                            <div class="gallery-overlay"><span class="gallery-caption">Live Threat Map</span></div>
+                        </div>
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI2.png"
+                                alt="Docker Headless Logs">
+                            <div class="gallery-overlay"><span class="gallery-caption">CLI Mode</span></div>
+                        </div>
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI3.png"
+                                alt="SQLi & XSS Simulation">
+                            <div class="gallery-overlay"><span class="gallery-caption">Attack Simulation</span></div>
+                        </div>
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI4.png"
+                                alt="Network Traffic Analysis">
+                            <div class="gallery-overlay"><span class="gallery-caption">Network Analysis</span></div>
+                        </div>
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI5.png"
+                                alt="Intrusion Detection Details">
+                            <div class="gallery-overlay"><span class="gallery-caption">Intrusion Details</span></div>
+                        </div>
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI6.png"
+                                alt="System Performance Metrics">
+                            <div class="gallery-overlay"><span class="gallery-caption">System Metrics</span></div>
+                        </div>
+
+                        <div class="gallery-item" onclick="openLightbox(this)">
+                            <img src="https://raw.githubusercontent.com/Vidumal/Vidumal.github.io/main/assets/images/honeypotGUI7.png"
+                                alt="Configuration & Settings">
+                            <div class="gallery-overlay"><span class="gallery-caption">Settings</span></div>
+                        </div>
+
+                    </div>
+
+                    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                        <span class="close-btn">&times;</span>
+                        <img id="lightbox-img" src="">
+                        <div id="lightbox-caption" class="lightbox-caption"></div>
+                    </div>
+                    <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                        <i class="fas fa-brain"></i> Threat Intelligence
+                    </h2>
+                    <ul style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">
+                        <li><strong style="color: var(--text-primary);">Geolocation Tracking:</strong> Fetches Country,
+                            City, and GPS coordinates of attackers using ip-api.com.</li>
+                        <li><strong style="color: var(--text-primary);">Heuristic Analysis:</strong> Analyzes payloads
+                            to classify threats (SQLi, RCE, Recon) and assigns risk scores.</li>
+                        <li><strong style="color: var(--text-primary);">Forensic Logging:</strong> Automatically appends
+                            timestamped evidence to <code>honeyguard_logs.txt</code> for auditing.</li>
                     </ul>
-                </div>
-            </div>
 
-            <h2 style="color: var(--accent-color); margin-bottom: 20px; font-family: 'JetBrains Mono';">
-                <i class="fas fa-images"></i> Surveillance Gallery
-            </h2>
-            
-            <div class="gallery-grid">
-                
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI1.png" alt="GUI Dashboard" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=Dashboard+Preview'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Live Threat Map Dashboard</span>
+                    <div
+                        style="background: rgba(0, 243, 255, 0.05); padding: 20px; border-radius: 10px; border-left: 4px solid var(--accent-color);">
+                        <h3 style="color: var(--accent-color); margin-bottom: 10px;">Deployment</h3>
+                        <p style="color: var(--text-primary);">
+                            HoneyGuard Pro can be deployed locally on Windows for a visual monitoring experience or
+                            containerized via Docker for scalable cloud security monitoring.
+                        </p>
                     </div>
-                </div>
 
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI2.png" alt="CLI Mode" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=CLI+Logs'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Docker Headless Logs</span>
+                    <div style="margin-top: 50px; text-align: center;">
+                        <a href="../index.html#projects" class="primary-btn">
+                            <i class="fas fa-arrow-left"></i> Back to Projects
+                        </a>
                     </div>
-                </div>
 
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI3.png" alt="Attack Simulation" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=Attack+Sim'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">SQLi & XSS Simulation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI4.png" alt="Network Analysis" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=Network+Analysis'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Network Traffic Analysis</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI5.png" alt="Intrusion Details" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=Intrusion+Details'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Intrusion Detection Details</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI6.png" alt="System Metrics" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=System+Metrics'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">System Performance Metrics</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://github.com/Vidumal/Vidumal.github.io/blob/main/assets/images/honeypotGUI7.png" alt="Settings & Config" onerror="this.src='https://placehold.co/800x500/1e1e2f/00f3ff?text=Settings'">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">Configuration & Settings</span>
-                    </div>
                 </div>
 
             </div>
-            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
-                <i class="fas fa-brain"></i> Threat Intelligence
-            </h2>
-            <ul style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">
-                <li><strong style="color: var(--text-primary);">Geolocation Tracking:</strong> Fetches Country, City, and GPS coordinates of attackers using ip-api.com.</li>
-                <li><strong style="color: var(--text-primary);">Heuristic Analysis:</strong> Analyzes payloads to classify threats (SQLi, RCE, Recon) and assigns risk scores.</li>
-                <li><strong style="color: var(--text-primary);">Forensic Logging:</strong> Automatically appends timestamped evidence to <code>honeyguard_logs.txt</code> for auditing.</li>
-            </ul>
-
-            <div style="background: rgba(0, 243, 255, 0.05); padding: 20px; border-radius: 10px; border-left: 4px solid var(--accent-color);">
-                <h3 style="color: var(--accent-color); margin-bottom: 10px;">Deployment</h3>
-                <p style="color: var(--text-primary);">
-                    HoneyGuard Pro can be deployed locally on Windows for a visual monitoring experience or containerized via Docker for scalable cloud security monitoring.
-                </p>
-            </div>
-
-            <div style="margin-top: 50px; text-align: center;">
-                <a href="../index.html#projects" class="primary-btn">
-                  <i class="fas fa-arrow-left"></i> Back to Projects
-                </a>
-            </div>
-
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="section-title">Initialize Handshake</h2>
-      <div class="contact-wrapper glass-panel">
-        <form id="contact-form">
-          <input type="hidden" name="access_key" value="fd8f8649-9a34-4aa0-a63e-fe3c6b9376ad">
-          <div class="input-group">
-            <input type="text" name="name" required>
-            <label>Name</label>
-          </div>
-          <div class="input-group">
-            <input type="email" name="email" required>
-            <label>Email</label>
-          </div>
-          <div class="input-group">
-            <textarea name="message" required></textarea>
-            <label>Message</label>
-          </div>
-          <div id="form-result"></div>
-          <button type="submit" class="btn primary-btn">Send Transmission</button>
-        </form>
-        <div class="social-connect">
-          <p>Or connect via secure channels:</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/punsithvidumal/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Vidumal" target="_blank"><i class="fab fa-github"></i></a>
-          </div>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Initialize Handshake</h2>
+            <div class="contact-wrapper glass-panel">
+                <form id="contact-form">
+                    <input type="hidden" name="access_key" value="fd8f8649-9a34-4aa0-a63e-fe3c6b9376ad">
+                    <div class="input-group">
+                        <input type="text" name="name" required>
+                        <label>Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="message" required></textarea>
+                        <label>Message</label>
+                    </div>
+                    <div id="form-result"></div>
+                    <button type="submit" class="btn primary-btn">Send Transmission</button>
+                </form>
+                <div class="social-connect">
+                    <p>Or connect via secure channels:</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/punsithvidumal/" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Vidumal" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Punsith Vidumal. <span style="opacity: 0.6;">Secure. Scalable. Safe.</span></p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Punsith Vidumal. <span style="opacity: 0.6;">Secure. Scalable. Safe.</span></p>
+    </footer>
 
-  <script src="../script.js"></script>
+    <script src="../script.js"></script>
 
-  <script>
-    const form = document.getElementById('contact-form');
-    const resultDiv = document.getElementById('form-result');
-    if(form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          const btn = form.querySelector('button');
-          const originalText = btn.innerText;
-          btn.innerText = 'Transmitting...';
-          const formData = new FormData(form);
-          const object = Object.fromEntries(formData);
-          const json = JSON.stringify(object);
-          fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: json
-          })
-          .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-              resultDiv.style.display = 'block';
-              resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> Transmission Successful!';
-              resultDiv.className = 'success-msg';
-              form.reset();
-              setTimeout(() => {
-                resultDiv.style.display = 'none';
-                btn.innerText = originalText;
-              }, 4000);
-            } else {
-              resultDiv.style.display = 'block';
-              resultDiv.innerHTML = json.message || "Failed!";
-              resultDiv.className = 'error-msg';
-              btn.innerText = originalText;
-            }
-          })
-          .catch(error => {
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = "Error!";
-            resultDiv.className = 'error-msg';
-            btn.innerText = originalText;
-          });
-        });
-    }
-  </script>
+    <script>
+        const form = document.getElementById('contact-form');
+        const resultDiv = document.getElementById('form-result');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const originalText = btn.innerText;
+                btn.innerText = 'Transmitting...';
+                const formData = new FormData(form);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: json
+                })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            resultDiv.style.display = 'block';
+                            resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> Transmission Successful!';
+                            resultDiv.className = 'success-msg';
+                            form.reset();
+                            setTimeout(() => {
+                                resultDiv.style.display = 'none';
+                                btn.innerText = originalText;
+                            }, 4000);
+                        } else {
+                            resultDiv.style.display = 'block';
+                            resultDiv.innerHTML = json.message || "Failed!";
+                            resultDiv.className = 'error-msg';
+                            btn.innerText = originalText;
+                        }
+                    })
+                    .catch(error => {
+                        resultDiv.style.display = 'block';
+                        resultDiv.innerHTML = "Error!";
+                        resultDiv.className = 'error-msg';
+                        btn.innerText = originalText;
+                    });
+            });
+        }
+    </script>
 
 </body>
+
 </html>
