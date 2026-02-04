@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face Mask Detection AI | Punsith Vidumal</title>
+  
+  <link rel="stylesheet" href="../style.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    #form-result {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .success-msg {
+      color: #00f3ff;
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid #00f3ff;
+    }
+    .error-msg {
+      color: #ff4d4d;
+      background: rgba(255, 77, 77, 0.1);
+      border: 1px solid #ff4d4d;
+    }
+    .tech-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .tech-list li {
+        background: rgba(255,255,255,0.05);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+    }
+    .file-structure li {
+        margin-bottom: 8px;
+        padding-left: 15px;
+        border-left: 2px solid var(--text-secondary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader">
+    <div class="scanner"></div>
+  </div>
+
+  <nav>
+    <div class="logo">Punsith<span class="dot">.</span>Sec</div>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </div>
+      </label>
+    </div>
+  </nav>
+
+  <section class="project-details-page" style="padding: 120px 0;">
+    <div class="container">
+      
+      <div class="glass-panel" style="max-width: 1000px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px;">
+          <h1 style="font-size: 2.5rem; font-family: 'JetBrains Mono'; margin-bottom: 10px;">Face Mask Detection System</h1>
+          <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem;">
+              <a href="https://github.com/Vidumal" target="_blank" style="color: var(--accent-color);"><i class="fab fa-github"></i> View Source</a>
+          </div>
+        </div>
+
+        <div class="project-content">
+            
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-brain"></i> Project Overview
+            </h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: var(--text-secondary);">
+                This project is a real-time computer vision application designed to detect whether a person is wearing a face mask or not. Utilizing <strong>Deep Learning</strong> and the <strong>MobileNetV2</strong> architecture, the system classifies video frames into two categories: "With Mask" and "Without Mask" with high accuracy.
+            </p>
+
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-microchip"></i> Technologies Used
+            </h2>
+            <ul class="tech-list" style="margin-bottom: 40px;">
+                <li>Python</li>
+                <li>TensorFlow / Keras</li>
+                <li>MobileNetV2</li>
+                <li>OpenCV</li>
+                <li>NumPy</li>
+                <li>Kaggle Datasets</li>
+            </ul>
+
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-project-diagram"></i> Workflow & Methodology
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
+                    <h3 style="margin-bottom: 10px; color: var(--text-primary);"><i class="fas fa-filter"></i> 1. Data Preprocessing</h3>
+                    <ul class="file-structure" style="list-style: none; color: var(--text-secondary);">
+                        <li><strong>Resizing:</strong> All images converted to 224x224 pixels.</li>
+                        <li><strong>Normalization:</strong> Pixel values scaled to [-1, 1] range.</li>
+                        <li><strong>Augmentation:</strong> Applied rotation, zoom, and horizontal flips to increase dataset variety.</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
+                    <h3 style="margin-bottom: 10px; color: var(--text-primary);"><i class="fas fa-network-wired"></i> 2. Model Training</h3>
+                    <ul class="file-structure" style="list-style: none; color: var(--text-secondary);">
+                        <li><strong>Base Model:</strong> MobileNetV2 (Pre-trained on ImageNet).</li>
+                        <li><strong>Head Model:</strong> Custom Fully Connected layers added for our specific 2-class problem.</li>
+                        <li><strong>Optimization:</strong> Used Adam optimizer with binary cross-entropy loss.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-star"></i> Key Features
+            </h2>
+            <ul style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">
+                <li><strong style="color: var(--text-primary);">Real-Time Detection:</strong> Process video streams instantly using OpenCV.</li>
+                <li><strong style="color: var(--text-primary);">High Accuracy:</strong> Leverages Transfer Learning for robust performance even with limited data.</li>
+                <li><strong style="color: var(--text-primary);">Lightweight:</strong> MobileNetV2 is optimized for speed, making it suitable for edge devices.</li>
+            </ul>
+
+            <div style="background: rgba(0, 243, 255, 0.05); padding: 20px; border-radius: 10px; border-left: 4px solid var(--accent-color);">
+                <h3 style="color: var(--accent-color); margin-bottom: 10px;">Impact</h3>
+                <p style="color: var(--text-primary);">
+                    This system can be deployed in public spaces (entrances to malls, offices, airports) to automate compliance monitoring, ensuring public safety during health crises without manual intervention.
+                </p>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <a href="../index.html#projects" class="primary-btn">
+                  <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Initialize Handshake</h2>
+      <div class="contact-wrapper glass-panel">
+        
+        <form id="contact-form">
+          <input type="hidden" name="access_key" value="fd8f8649-9a34-4aa0-a63e-fe3c6b9376ad">
+
+          <div class="input-group">
+            <input type="text" name="name" required>
+            <label>Name</label>
+          </div>
+
+          <div class="input-group">
+            <input type="email" name="email" required>
+            <label>Email</label>
+          </div>
+
+          <div class="input-group">
+            <textarea name="message" required></textarea>
+            <label>Message</label>
+          </div>
+
+          <div id="form-result"></div>
+
+          <button type="submit" class="btn primary-btn">Send Transmission</button>
+        </form>
+
+        <div class="social-connect">
+          <p>Or connect via secure channels:</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/punsithvidumal/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Vidumal" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Punsith Vidumal. <span style="opacity: 0.6;">Secure. Scalable. Safe.</span></p>
+  </footer>
+
+  <script src="../script.js"></script>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const resultDiv = document.getElementById('form-result');
+
+    if(form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const btn = form.querySelector('button');
+          const originalText = btn.innerText;
+          btn.innerText = 'Transmitting...';
+
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: json
+          })
+          .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+              resultDiv.style.display = 'block';
+              resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> Transmission Successful!';
+              resultDiv.className = 'success-msg';
+              form.reset();
+              setTimeout(() => {
+                resultDiv.style.display = 'none';
+                btn.innerText = originalText;
+              }, 4000);
+            } else {
+              resultDiv.style.display = 'block';
+              resultDiv.innerHTML = json.message || "Failed!";
+              resultDiv.className = 'error-msg';
+              btn.innerText = originalText;
+            }
+          })
+          .catch(error => {
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = "Error!";
+            resultDiv.className = 'error-msg';
+            btn.innerText = originalText;
+          });
+        });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSH Honeypot | Punsith Vidumal</title>
+  
+  <link rel="stylesheet" href="../style.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    #form-result {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .success-msg {
+      color: #00f3ff;
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid #00f3ff;
+    }
+    .error-msg {
+      color: #ff4d4d;
+      background: rgba(255, 77, 77, 0.1);
+      border: 1px solid #ff4d4d;
+    }
+    .tech-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .tech-list li {
+        background: rgba(255,255,255,0.05);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+    }
+    .file-structure li {
+        margin-bottom: 8px;
+        padding-left: 15px;
+        border-left: 2px solid var(--text-secondary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader">
+    <div class="scanner"></div>
+  </div>
+
+  <nav>
+    <div class="logo">Punsith<span class="dot">.</span>Sec</div>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </div>
+      </label>
+    </div>
+  </nav>
+
+  <section class="project-details-page" style="padding: 120px 0;">
+    <div class="container">
+      
+      <div class="glass-panel" style="max-width: 1000px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px;">
+          <h1 style="font-size: 2.5rem; font-family: 'JetBrains Mono'; margin-bottom: 10px;">SSH Honeypot</h1>
+          <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem;">
+              <a href="https://github.com/Vidumal" target="_blank" style="color: var(--accent-color);"><i class="fab fa-github"></i> View Source</a>
+          </div>
+        </div>
+
+        <div class="project-content">
+            
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-spider"></i> Project Overview
+            </h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: var(--text-secondary);">
+                This project is a <strong>Low-Interaction Honeypot</strong> developed in Python using Socket programming. It is designed to mimic a vulnerable SSH server to attract malicious actors. Instead of blocking attacks, it silently logs the intruder's IP address, username, and password attempts, providing valuable <strong>Threat Intelligence</strong> on brute-force patterns.
+            </p>
+
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-terminal"></i> Technologies Used
+            </h2>
+            <ul class="tech-list" style="margin-bottom: 40px;">
+                <li>Python 3</li>
+                <li>Socket Programming</li>
+                <li>Paramiko (SSH Library)</li>
+                <li>Threading</li>
+                <li>Logging Module</li>
+            </ul>
+
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-cogs"></i> How It Works
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
+                    <h3 style="margin-bottom: 10px; color: var(--text-primary);"><i class="fas fa-magnet"></i> 1. The Lure</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        The script binds to Port 2222 (or 22) and listens for incoming connections. To an external scanner (like Nmap), it appears to be a legitimate, active SSH service.
+                    </p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;">
+                    <h3 style="margin-bottom: 10px; color: var(--text-primary);"><i class="fas fa-fingerprint"></i> 2. Data Capture</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        When an attacker attempts to login, the script accepts the connection but rejects the password. Meanwhile, it records the <strong>Source IP</strong>, <strong>Username</strong>, and <strong>Password</strong> to a local log file.
+                    </p>
+                </div>
+
+            </div>
+
+            <h2 style="color: var(--accent-color); margin-bottom: 15px; font-family: 'JetBrains Mono';">
+                <i class="fas fa-shield-virus"></i> Key Features
+            </h2>
+            <ul style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.6;">
+                <li><strong style="color: var(--text-primary);">Multi-Threaded:</strong> Handles multiple attacker connections simultaneously using Python Threading.</li>
+                <li><strong style="color: var(--text-primary);">Stealth Mode:</strong> Does not reveal true system information to the attacker.</li>
+                <li><strong style="color: var(--text-primary);">Forensics Log:</strong> Generates a structured `intrusions.log` file for analysis.</li>
+            </ul>
+
+            <div style="background: rgba(0, 243, 255, 0.05); padding: 20px; border-radius: 10px; border-left: 4px solid var(--accent-color);">
+                <h3 style="color: var(--accent-color); margin-bottom: 10px;">Educational Value</h3>
+                <p style="color: var(--text-primary);">
+                    Building this honeypot provided deep insights into network protocols, socket handling, and the methodology of brute-force attacks in the wild.
+                </p>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center;">
+                <a href="../index.html#projects" class="primary-btn">
+                  <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Initialize Handshake</h2>
+      <div class="contact-wrapper glass-panel">
+        
+        <form id="contact-form">
+          <input type="hidden" name="access_key" value="fd8f8649-9a34-4aa0-a63e-fe3c6b9376ad">
+
+          <div class="input-group">
+            <input type="text" name="name" required>
+            <label>Name</label>
+          </div>
+
+          <div class="input-group">
+            <input type="email" name="email" required>
+            <label>Email</label>
+          </div>
+
+          <div class="input-group">
+            <textarea name="message" required></textarea>
+            <label>Message</label>
+          </div>
+
+          <div id="form-result"></div>
+
+          <button type="submit" class="btn primary-btn">Send Transmission</button>
+        </form>
+
+        <div class="social-connect">
+          <p>Or connect via secure channels:</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/punsithvidumal/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Vidumal" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Punsith Vidumal. <span style="opacity: 0.6;">Secure. Scalable. Safe.</span></p>
+  </footer>
+
+  <script src="../script.js"></script>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const resultDiv = document.getElementById('form-result');
+
+    if(form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const btn = form.querySelector('button');
+          const originalText = btn.innerText;
+          btn.innerText = 'Transmitting...';
+
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: json
+          })
+          .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+              resultDiv.style.display = 'block';
+              resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> Transmission Successful!';
+              resultDiv.className = 'success-msg';
+              form.reset();
+              setTimeout(() => {
+                resultDiv.style.display = 'none';
+                btn.innerText = originalText;
+              }, 4000);
+            } else {
+              resultDiv.style.display = 'block';
+              resultDiv.innerHTML = json.message || "Failed!";
+              resultDiv.className = 'error-msg';
+              btn.innerText = originalText;
+            }
+          })
+          .catch(error => {
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = "Error!";
+            resultDiv.className = 'error-msg';
+            btn.innerText = originalText;
+          });
+        });
+    }
+  </script>
+
+</body>
+</html>

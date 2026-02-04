@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punsith Vidumal | Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    #form-result {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .success-msg {
+      color: #00f3ff; /* Neon Cyan */
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid #00f3ff;
+    }
+    .error-msg {
+      color: #ff4d4d; /* Red */
+      background: rgba(255, 77, 77, 0.1);
+      border: 1px solid #ff4d4d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader">
+    <div class="scanner"></div>
+  </div>
+
+  <nav>
+    <div class="logo">Punsith<span class="dot">.</span>Sec</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </div>
+      </label>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="Welcome to My Cyber World">Welcome to My Cyber World</h1>
+      </div>
+      <p class="typewriter">Protecting the digital world, one line of code at a time_</p>
+      <a href="#about" class="btn primary-btn">Explore Mission</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-card glass-panel">
+        <div class="about-img">
+          <img src="assets/images/profile.jpg" alt="Punsith Vidumal">
+        </div>
+        <div class="about-text">
+          <h2><span class="accent">./</span>About Me</h2>
+          <p>
+            I’m <strong>Punsith Vidumal</strong>, a Cybersecurity undergraduate at SLIIT with a passion for Linux and
+            cloud defense.
+            Driven by the need to secure digital frontiers, I aim to excel as a <strong>Security Engineer</strong>.
+            Whether it's penetration testing or building secure infrastructure, I am committed to continuous learning in
+            this ever-evolving battlefield.
+          </p>
+          <p class="status"><i class="fas fa-wifi"></i> Status: Open to Collaboration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Arsenal</h2>
+      <div class="skills-grid">
+        <a href="skills/network-security.html" class="skill-card glass-panel">
+          <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+          <h3>NetSec</h3>
+          <p>Network Defense</p>
+        </a>
+        <a href="skills/ethical-hacking.html" class="skill-card glass-panel">
+          <div class="icon-box"><i class="fas fa-user-secret"></i></div>
+          <h3>Red Teaming</h3>
+          <p>Ethical Hacking</p>
+        </a>
+        <a href="skills/penetration-testing.html" class="skill-card glass-panel">
+          <div class="icon-box"><i class="fas fa-bug"></i></div>
+          <h3>PenTest</h3>
+          <p>Vulnerability Assessment</p>
+        </a>
+        <a href="skills/cryptography.html" class="skill-card glass-panel">
+          <div class="icon-box"><i class="fas fa-key"></i></div>
+          <h3>Cryptography</h3>
+          <p>Encryption & Hashing</p>
+        </a>
+        <a href="skills/python.html" class="skill-card glass-panel">
+          <div class="icon-box"><i class="fab fa-python"></i></div>
+          <h3>Python</h3>
+          <p>Automation Scripts</p>
+        </a>
+        <a href="skills/javascript.html" class="skill-card glass-panel">
+          <div class="icon-box"><i class="fab fa-js"></i></div>
+          <h3>JavaScript</h3>
+          <p>Web Security</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Deployed Projects</h2>
+      
+      <div class="projects-grid" id="projects-container">
+        </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Initialize Handshake</h2>
+      <div class="contact-wrapper glass-panel">
+        
+        <form id="contact-form">
+          
+          <input type="hidden" name="access_key" value="fd8f8649-9a34-4aa0-a63e-fe3c6b9376ad">
+
+          <div class="input-group">
+            <input type="text" name="name" required>
+            <label>Name</label>
+          </div>
+
+          <div class="input-group">
+            <input type="email" name="email" required>
+            <label>Email</label>
+          </div>
+
+          <div class="input-group">
+            <textarea name="message" required></textarea>
+            <label>Message</label>
+          </div>
+
+          <div id="form-result"></div>
+
+          <button type="submit" class="btn primary-btn">Send Transmission</button>
+        </form>
+
+        <div class="social-connect">
+          <p>Or connect via secure channels:</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/punsithvidumal/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Vidumal" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Punsith Vidumal. <span class="dim">Secure. Scalable. Safe.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const resultDiv = document.getElementById('form-result');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Stop page reload
+
+      const btn = form.querySelector('button');
+      const originalText = btn.innerText;
+      btn.innerText = 'Transmitting...';
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          // SUCCESS: Show message and redirect
+          resultDiv.style.display = 'block';
+          resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> Transmission Successful!';
+          resultDiv.className = 'success-msg';
+          
+          form.reset(); // Clear form inputs
+          
+          setTimeout(() => {
+            window.location.href = "#home"; // Redirect to Home Section
+            resultDiv.style.display = 'none';
+            btn.innerText = originalText;
+          }, 2000); // Wait 2 seconds
+
+        } else {
+          // ERROR
+          console.log(response);
+          resultDiv.style.display = 'block';
+          resultDiv.innerHTML = json.message || "Transmission Failed!";
+          resultDiv.className = 'error-msg';
+          btn.innerText = originalText;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = "Something went wrong!";
+        resultDiv.className = 'error-msg';
+        btn.innerText = originalText;
+      });
+    });
+  </script>
+
+</body>
+</html>

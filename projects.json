@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Bookstore Manager",
+    "description": "A secure Spring Boot Java application designed to manage inventory without complex database overhead.",
+    "url": "projects/OnlineBookStoreManagmentSystem.html",
+    "github": "https://github.com/Vidumal/Online-BookStore-Management-System",
+    "tech": ["Java", "Spring Boot", "Security"]
+  },
+  {
+    "title": "Face Mask Detection",
+    "description": "Real-time AI system utilizing MobileNetV2 to classify video streams into 'Mask' or 'No Mask' categories.",
+    "url": "projects/FaceMaskDetection.html",
+    "github": "https://github.com/Vidumal/Face-Mask-Detection-System",
+    "tech": ["Python", "TensorFlow", "OpenCV"]
+  },
+  {
+    "title": "SSH Honeypot",
+    "description": "A cybersecurity deception tool designed to simulate a vulnerable server, trapping attackers and logging their credentials for threat analysis.",
+    "url": "projects/honeypot.html",
+    "github": "https://github.com/Vidumal/honeypot",
+    "tech": ["Python", "Socket", "Threat Intel"]
+  }
+]

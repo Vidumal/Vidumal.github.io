@@ -1,0 +1,459 @@
+/* =========================================
+   1. CSS VARIABLES (THEME ENGINE)
+   ========================================= */
+:root {
+  /* Dark Mode (Default) */
+  --bg-primary: #0a0a12;
+  --bg-secondary: #161625;
+  --text-primary: #e6e6e6;
+  --text-secondary: #a0a0b0;
+  --accent-color: #00f3ff; /* Neon Cyan */
+  --accent-glow: rgba(0, 243, 255, 0.4);
+  --glass-bg: rgba(22, 22, 37, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(10, 10, 18, 0.85);
+  --card-hover: #1e1e2f;
+}
+
+[data-theme="light"] {
+  /* Light Mode Overrides */
+  --bg-primary: #f4f6f8;
+  --bg-secondary: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #555566;
+  --accent-color: #0077b6; /* Ocean Blue */
+  --accent-glow: rgba(0, 119, 182, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --card-hover: #ffffff;
+}
+
+/* =========================================
+   2. GLOBAL STYLES
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+/* =========================================
+   3. NAVIGATION BAR
+   ========================================= */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+  font-size: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.dot { color: var(--accent-color); }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* =========================================
+   4. THEME TOGGLE SWITCH
+   ========================================= */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+.theme-switch {
+  display: inline-block;
+  height: 26px; /* slightly smaller */
+  position: relative;
+  width: 50px;
+}
+.theme-switch input { display: none; }
+
+.slider {
+  background-color: #333;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6px;
+  border-radius: 34px;
+}
+
+.slider .fa-sun { color: #f39c12; font-size: 12px; }
+.slider .fa-moon { color: #f1c40f; font-size: 12px; }
+
+.slider:before {
+  background-color: #fff;
+  bottom: 3px;
+  content: "";
+  height: 20px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Toggle Logic */
+input:checked + .slider:before { transform: translateX(22px); }
+input:checked + .slider { background-color: #ccc; }
+
+/* =========================================
+   5. HERO SECTION
+   ========================================= */
+.hero {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(0, 243, 255, 0.05) 0%, transparent 70%);
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.typewriter {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.primary-btn {
+  padding: 12px 30px;
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: var(--accent-color);
+  color: #000;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* =========================================
+   6. GLASS PANELS & CARDS (REUSABLE)
+   ========================================= */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* =========================================
+   7. ABOUT SECTION
+   ========================================= */
+.about, .skills, .projects, .contact { padding: 80px 0; }
+
+.about-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-img img {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px; /* Modern rounded square */
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.about-text h2 { margin-bottom: 20px; font-size: 2rem; }
+.about-text .accent { color: var(--accent-color); font-family: 'JetBrains Mono'; }
+.about-text p { line-height: 1.8; color: var(--text-secondary); margin-bottom: 15px; }
+.about-text .status { margin-top: 20px; font-size: 0.9rem; color: var(--accent-color); }
+
+/* =========================================
+   8. SKILLS GRID
+   ========================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 30px -10px var(--accent-glow);
+}
+
+.icon-box {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.skill-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+.skill-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+/* =========================================
+   9. PROJECTS
+   ========================================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: transform 0.3s;
+}
+
+.project-card:hover { transform: translateY(-5px); }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.card-header .links a {
+  margin-left: 10px;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.card-header .links a:hover { color: var(--accent-color); }
+
+.project-card h3 a { font-size: 1.4rem; transition: color 0.3s; }
+.project-card h3 a:hover { color: var(--accent-color); }
+
+.project-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.tech-stack {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   10. CONTACT FORM (Floating Labels)
+   ========================================= */
+.contact-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--text-secondary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:valid ~ label {
+  top: -20px;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+}
+
+.input-group input:focus, .input-group textarea:focus {
+  border-bottom-color: var(--accent-color);
+}
+
+.social-connect { text-align: center; margin-top: 30px; }
+.social-links { margin-top: 10px; font-size: 1.5rem; }
+.social-links a { margin: 0 15px; transition: 0.3s; }
+.social-links a:hover { color: var(--accent-color); transform: scale(1.1); }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  font-size: 0.9rem;
+}
+
+/* Loading Animation (Cyber Scanner) */
+.loader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.scanner {
+  width: 100px;
+  height: 4px;
+  background: var(--accent-color);
+  animation: scan 2s infinite ease-in-out;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+@keyframes scan {
+  0% { width: 0; opacity: 1; }
+  50% { width: 100px; opacity: 1; }
+  100% { width: 0; opacity: 0; }
+}
+
+/* Animations */
+.hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
+.show { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-card { flex-direction: column; text-align: center; }
+  .nav-links { display: none; } /* Simplified for code brevity */
+  .hero h1 { font-size: 2.5rem; }
+}
