@@ -19,5 +19,13 @@
     "url": "projects/honeypot.html",
     "github": "https://github.com/Vidumal/honeypot",
     "tech": ["Python", "Socket", "Threat Intel"]
+  },
+
+  {
+    "title": "HoneyGuard Pro",
+    "description": "Advanced threat intelligence honeypot featuring a dual-mode architecture: interactive GUI map for local monitoring and headless CLI for Docker cloud deployment.",
+    "url": "projects/honeypot.html",
+    "github": "https://github.com/Vidumal/honeypot-with-GUI",
+    "tech": ["Python", "Docker", "Threat Intel"]
   }
 ]
