@@ -29,89 +29,6 @@
   --card-hover: #ffffff;
 }
 
-/* GALLERY GRID */
-    .gallery-grid {
-        display: grid;
-        /* Creates a responsive grid (3 columns on wide screens, 1 on mobile) */
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 15px;
-        margin-bottom: 40px;
-    }
-
-    .gallery-item {
-        position: relative;
-        height: 250px; /* Fixed height for neat rows */
-        overflow: hidden;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-        transition: transform 0.2s;
-    }
-
-    .gallery-item:hover {
-        transform: scale(1.03);
-        border-color: var(--accent-color);
-        box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-    }
-
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensures image fills the box without stretching */
-        display: block;
-    }
-
-    .gallery-overlay {
-        position: absolute;
-        bottom: 0; left: 0; width: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 8px;
-        text-align: center;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-    }
-
-    /* LIGHTBOX (FULL SCREEN VIEW) */
-    .lightbox {
-        display: none; /* Hidden by default */
-        position: fixed;
-        z-index: 9999;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    
-    .lightbox img {
-        max-width: 90%;
-        max-height: 85%;
-        border: 2px solid var(--accent-color);
-        box-shadow: 0 0 30px var(--accent-color);
-        border-radius: 5px;
-    }
-    
-    .lightbox-caption {
-        color: #fff;
-        margin-top: 15px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1.2rem;
-    }
-
-    .close-btn {
-        position: absolute;
-        top: 20px; right: 30px;
-        color: #fff;
-        font-size: 40px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    .close-btn:hover { color: var(--accent-color); }
 /* =========================================
    2. GLOBAL STYLES
    ========================================= */
@@ -540,3 +457,97 @@ footer {
   .nav-links { display: none; } /* Simplified for code brevity */
   .hero h1 { font-size: 2.5rem; }
 }
+
+
+/* =========================================
+   11. PROJECT GALLERY STYLES
+   (Added here so they can be reused across pages)
+   ========================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Only 1 column (Full Width) */
+    gap: 40px; 
+    margin-bottom: 60px;
+}
+
+.gallery-item {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-caption {
+    color: var(--accent-color);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 30px var(--accent-color);
+    border-radius: 5px;
+}
+
+.lightbox-caption {
+    color: #fff;
+    margin-top: 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close-btn:hover { color: var(--accent-color); }
