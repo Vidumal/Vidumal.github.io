@@ -27,5 +27,14 @@
     "url": "projects/honeypotGUI.html",
     "github": "https://github.com/Vidumal/honeypot-with-GUI",
     "tech": ["Python", "Docker", "Threat Intel"]
+  },
+  {
+    "title": "Multi-Layered Image Steganography",
+    "description": "is a high-security steganography tool that uses AES-256-GCM encryption and randomized pixel-shuffling to hide private messages inside images, ensuring they are invisible to the eye and impossible to extract without the correct secret key.",
+    "url": "projects/honeypotGUI.html",
+    "github": "https://github.com/Vidumal/multi-layered-steganography.git",
+    "tech": ["Python", "AES-256-GCM", "Steganography"]
   }
+
+  
 ]
